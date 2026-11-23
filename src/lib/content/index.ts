@@ -68,6 +68,14 @@ export function getLatestArticles(limit = 8): ArticleWithMeta[] {
   return allArticles.slice(0, limit);
 }
 
+/** Articles first published within the last `days` (Google News sitemap window). */
+export function getRecentNewsArticles(days = 2): ArticleWithMeta[] {
+  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+  return allArticles.filter(
+    (article) => new Date(article.publishedAt).getTime() >= cutoff,
+  );
+}
+
 export function getRelatedArticles(
   article: Article,
   limit = 3,
