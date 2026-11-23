@@ -11,9 +11,9 @@ import {
   getAuthor,
   getCategory,
   getRelatedArticles,
+  slugifyTag,
 } from "@/lib/content";
-import { absoluteUrl, articleJsonLd, buildPageMetadata } from "@/lib/seo";
-
+import { articleJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getAllArticles().map((article) => ({ slug: article.slug }));
@@ -29,8 +29,12 @@ export async function generateMetadata({
       title: "כתבה לא נמצאה",
       description: "הכתבה המבוקשת אינה קיימת.",
       path: `/article/${slug}`,
+      noIndex: true,
     });
   }
+
+  const author = getAuthor(article.authorId);
+  const category = getCategory(article.category);
 
   return buildPageMetadata({
     title: article.title,
@@ -38,6 +42,10 @@ export async function generateMetadata({
     path: article.href,
     image: article.image,
     type: "article",
+    publishedTime: article.publishedAt,
+    modifiedTime: article.updatedAt ?? article.publishedAt,
+    authors: [author.name],
+    section: category.name,
   });
 }
 
@@ -77,14 +85,36 @@ export default async function ArticlePage({
         </h1>
         <p className="mt-4 text-lg leading-8 text-muted">{article.excerpt}</p>
         <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
-          <span>{author.name}</span>
+          <Link
+            href={`/authors/${author.id}`}
+            className="font-medium text-foreground hover:text-brand"
+          >
+            {author.name}
+          </Link>
           <span aria-hidden>·</span>
           <time dateTime={article.publishedAt}>{published}</time>
           <span aria-hidden>·</span>
           <span>{article.readingTimeMinutes} דק׳ קריאה</span>
         </div>
-        <div className="mt-5">
-          <ShareButtons title={article.title} url={`${siteConfig.url}${article.href}`} />
+        {article.tags.length > 0 ? (
+          <ul className="mt-4 flex flex-wrap gap-2" aria-label="תגיות">
+            {article.tags.map((tag) => (
+              <li key={tag}>
+                <Link
+                  href={`/tags/${slugifyTag(tag)}`}
+                  className="inline-flex rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted hover:border-brand hover:text-brand"
+                >
+                  {tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        <div className="mt-5 no-print">
+          <ShareButtons
+            title={article.title}
+            url={`${siteConfig.url}${article.href}`}
+          />
         </div>
       </div>
 
@@ -93,7 +123,6 @@ export default async function ArticlePage({
           src={article.image}
           alt={article.imageAlt}
           fill
-          priority
           sizes="(max-width: 900px) 100vw, 900px"
           className="object-cover"
         />
@@ -108,17 +137,15 @@ export default async function ArticlePage({
         <ArticleMarkdown content={article.body} />
 
         <div className="mt-10 rounded-2xl border border-border bg-surface p-5">
-          <p className="text-sm font-semibold">{author.name}</p>
+          <Link
+            href={`/authors/${author.id}`}
+            className="text-sm font-semibold hover:text-brand"
+          >
+            {author.name}
+          </Link>
           <p className="text-xs text-brand">{author.title}</p>
           <p className="mt-2 text-sm leading-6 text-muted">{author.bio}</p>
         </div>
-
-        <p className="mt-6 text-xs text-muted">
-          קישור קנוני:{" "}
-          <a className="text-brand" href={absoluteUrl(article.href)}>
-            {absoluteUrl(article.href)}
-          </a>
-        </p>
       </div>
 
       <section className="mt-16 border-t border-border pt-10">

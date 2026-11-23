@@ -15,12 +15,22 @@ export function buildPageMetadata({
   path = "/",
   image = siteConfig.defaultOgImage,
   type = "website",
+  publishedTime,
+  modifiedTime,
+  authors,
+  section,
+  noIndex = false,
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string;
   type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
+  section?: string;
+  noIndex?: boolean;
 }): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image.startsWith("http") ? image : absoluteUrl(image);
@@ -29,6 +39,7 @@ export function buildPageMetadata({
     title,
     description,
     alternates: { canonical: url },
+    robots: noIndex ? { index: false, follow: false } : undefined,
     openGraph: {
       title,
       description,
@@ -36,7 +47,15 @@ export function buildPageMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type,
-      images: [{ url: ogImage, alt: title }],
+      images: [{ url: ogImage, alt: title, width: 1200, height: 630 }],
+      ...(type === "article"
+        ? {
+            publishedTime,
+            modifiedTime,
+            authors,
+            section,
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -67,6 +86,7 @@ export function articleJsonLd(article: ArticleWithMeta) {
     author: {
       "@type": "Person",
       name: author.name,
+      url: absoluteUrl(`/authors/${author.id}`),
     },
     publisher: {
       "@type": "NewsMediaOrganization",
@@ -78,19 +98,7 @@ export function articleJsonLd(article: ArticleWithMeta) {
     },
     mainEntityOfPage: absoluteUrl(article.href),
     articleSection: category.name,
+    keywords: article.tags.join(", "),
     inLanguage: "he-IL",
-  };
-}
-
-export function organizationJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "NewsMediaOrganization",
-    name: siteConfig.name,
-    url: absoluteUrl("/"),
-    logo: absoluteUrl("/images/og-default.svg"),
-    sameAs: [],
-    foundingDate: "2026",
-    description: siteConfig.description,
   };
 }

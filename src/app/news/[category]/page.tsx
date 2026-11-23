@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/article/article-card";
 import {
@@ -7,7 +6,7 @@ import {
   getCategory,
   isCategorySlug,
 } from "@/lib/content";
-
+import { buildPageMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -17,14 +16,22 @@ export function generateStaticParams() {
   return categories.map((c) => ({ category: c.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { category } = await params;
-  if (!isCategorySlug(category)) return {};
+  if (!isCategorySlug(category)) {
+    return buildPageMetadata({
+      title: "מדור לא נמצא",
+      description: "המדור המבוקש אינו קיים.",
+      path: `/news/${category}`,
+      noIndex: true,
+    });
+  }
   const cat = getCategory(category);
-  return {
+  return buildPageMetadata({
     title: cat.name,
     description: cat.description,
-  };
+    path: cat.href,
+  });
 }
 
 export default async function CategoryPage({ params }: Props) {

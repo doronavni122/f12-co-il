@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "העמוד לא נמצא",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (
@@ -20,6 +26,12 @@ export default function NotFound() {
           className="inline-flex h-11 items-center rounded-full border border-border bg-surface px-5 text-sm font-semibold hover:border-brand"
         >
           חיפוש
+        </Link>
+        <Link
+          href="/news"
+          className="inline-flex h-11 items-center rounded-full border border-border bg-surface px-5 text-sm font-semibold hover:border-brand"
+        >
+          כל החדשות
         </Link>
       </div>
     </div>
