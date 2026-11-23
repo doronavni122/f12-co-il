@@ -27,3 +27,4 @@
 20. fix-qa-smoke-fetch-hang-exit , scripts/qa/smoke-prod.mjs task_graph.log
 21. expand-publisher-transparency-site-config , src/lib/site.ts .env.example task_graph.log
 22. strengthen-about-publisher-transparency-page , src/app/about/page.tsx task_graph.log
+23. add-contact-form-and-editorial-channels , src/app/contact/page.tsx src/components/contact/contact-form.tsx src/app/api/contact/route.ts task_graph.log
