@@ -10,6 +10,7 @@ const root = resolve(import.meta.dirname, "../..");
 const scripts = [
   "scripts/qa/assert-design.mjs",
   "scripts/qa/assert-seo.mjs",
+  "scripts/qa/assert-news.mjs",
   "scripts/qa/assert-a11y.mjs",
   "scripts/qa/assert-links.mjs",
 ];

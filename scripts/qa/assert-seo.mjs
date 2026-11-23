@@ -20,6 +20,11 @@ function assert(cond, msg) {
 assert(existsSync(resolve(root, "src/app/sitemap.ts")), "missing sitemap.ts");
 assert(existsSync(resolve(root, "src/app/robots.ts")), "missing robots.ts");
 assert(existsSync(resolve(root, "src/app/rss.xml/route.ts")), "missing rss route");
+assert(existsSync(resolve(root, "src/app/feed.xml/route.ts")), "missing feed.xml route");
+assert(
+  existsSync(resolve(root, "src/app/news-sitemap.xml/route.ts")),
+  "missing news-sitemap.xml route",
+);
 
 const sitemap = read("src/app/sitemap.ts");
 assert(sitemap.includes('"/news"'), "sitemap must include /news");
@@ -29,16 +34,20 @@ assert(sitemap.includes("getAllTags"), "sitemap must include tags");
 const seo = read("src/lib/seo.ts");
 assert(seo.includes("publishedTime"), "article OG must support publishedTime");
 assert(seo.includes("noIndex"), "seo helper must support noIndex");
+assert(seo.includes("NewsArticle"), "seo must expose NewsArticle JSON-LD");
 
 const robots = read("src/app/robots.ts");
 assert(robots.includes("sitemap"), "robots.ts must reference sitemap");
+assert(robots.includes("news-sitemap.xml"), "robots.ts must reference news sitemap");
 
-const rss = read("src/app/rss.xml/route.ts");
-assert(rss.includes("atom:link"), "RSS must include atom self link");
-assert(rss.includes("guid isPermaLink"), "RSS items need stable permalink guid");
+const rssLib = read("src/lib/rss-feed.ts");
+assert(rssLib.includes("atom:link"), "RSS must include atom self link");
+assert(rssLib.includes("guid isPermaLink"), "RSS items need stable permalink guid");
+assert(rssLib.includes("content:encoded"), "RSS must include content:encoded");
 
 const layout = read("src/app/layout.tsx");
 assert(layout.includes("application/rss+xml"), "layout metadata must advertise RSS");
+assert(layout.includes("/feed.xml"), "layout metadata must advertise /feed.xml");
 
 if (failures.length) {
   console.error("[qa:seo] FAILED");

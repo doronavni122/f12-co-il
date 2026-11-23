@@ -11,6 +11,8 @@
     "qa": "node scripts/qa/run-all.mjs",
     "qa:design": "node scripts/qa/assert-design.mjs",
     "qa:seo": "node scripts/qa/assert-seo.mjs",
+    "qa:news": "node scripts/qa/assert-news.mjs",
+    "qa:news:smoke": "node scripts/qa/smoke-news.mjs",
     "qa:a11y": "node scripts/qa/assert-a11y.mjs",
     "qa:links": "node scripts/qa/assert-links.mjs",
     "qa:build": "pnpm typecheck && pnpm lint && pnpm build",
