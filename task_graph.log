@@ -1,1 +1,2 @@
 1. scaffold-nextjs-app , package.json next.config.ts src/app task_graph.log
+2. add-content-deps-zod-markdown , package.json pnpm-lock.yaml task_graph.log
