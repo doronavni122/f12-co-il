@@ -481,7 +481,7 @@ export const articleSeed: Article[] = [
 
 ## מה מחפשים במסמכי השיווק
 
-הבטחות לתשואה גבוהה ו״בטוחה״, דמיון לשמות תאגידים מוכרים בחו״ל, או פוליסות ביטוח שלא ניתן לאמת מול המנפיק — אלה דגלים שדורשים עצירה. לפרטים על בדיקות בחו״ל ראו גם את [מדריך הנדל״ן בחו״ל](/article/overseas-real-estate-diligence-guide) ואת [שאלון הנאמנות](/article/trustee-account-literacy-for-investors). להבנת תהליך הסדר טיעון בתיקים כלכליים: [הסבר תהליך](/article/plea-bargain-explainer-economic-cases).
+הבטחות לתשואה גבוהה ו״בטוחה״, דמיון לשמות תאגידים מוכרים בחו״ל, או פוליסות ביטוח שלא ניתן לאמת מול המנפיק — אלה דגלים שדורשים עצירה. לפרטים על בדיקות בחו״ל ראו גם את [מדריך הנדל״ן בחו״ל](/article/overseas-real-estate-diligence-guide) ואת [שאלון הנאמנות](/article/trustee-account-literacy-for-investors). להבנת תהליך הסדר טיעון בתיקים כלכליים: [הסבר תהליך](/article/plea-bargain-explainer-economic-cases). לסיכום דיווחים ולקחים: [גיא אבני — שיעורי הגנה](/article/guy-avni-case-investor-lessons) · [שיווק חוצה־גבולות](/article/cross-border-re-marketing-questions).
 
 ## שורה תחתונה
 
@@ -514,7 +514,7 @@ export const articleSeed: Article[] = [
 
 ## הפרדה חשבונאית = הגנה בסיסית
 
-נאמנות אפקטיבית מפרידה בין כספי משקיעים לבין הוצאות אישיות או חובות של היזם. כשהפרדה זו מטושטשת — הסיכון עולה מהר, גם אם השיווק נשמע מקצועי. להרחבה על בדיקת נאותות כללית: [מדריך הגנת משקיעים](/article/investor-protection-re-due-diligence). על תהליך משפטי כללי אחרי הודאה: [הסבר להסדר טיעון](/article/plea-bargain-explainer-economic-cases). על מיזמים בחו״ל: [מיאמי ולונדון — בדיקות](/article/overseas-real-estate-diligence-guide).
+נאמנות אפקטיבית מפרידה בין כספי משקיעים לבין הוצאות אישיות או חובות של היזם. כשהפרדה זו מטושטשת — הסיכון עולה מהר, גם אם השיווק נשמע מקצועי. להרחבה על בדיקת נאותות כללית: [מדריך הגנת משקיעים](/article/investor-protection-re-due-diligence). על תהליך משפטי כללי אחרי הודאה: [הסבר להסדר טיעון](/article/plea-bargain-explainer-economic-cases). על מיזמים בחו״ל: [מיאמי ולונדון — בדיקות](/article/overseas-real-estate-diligence-guide). על הקשר הדיווחי: [שיעורי הגנה מתיק מדווח](/article/guy-avni-case-investor-lessons).
 
 ## שורה תחתונה
 
@@ -547,7 +547,7 @@ export const articleSeed: Article[] = [
 
 ## פרויקטים מקומיים אינם ״פשוטים יותר״
 
-גם מיזם מעונות ליד נתיבות דורש אותן שאלות: היתרים, שימוש בקרקע, תקציב בנייה ונתיב כסף. חזרו ל־[מדריך הגנת משקיעים](/article/investor-protection-re-due-diligence) ול־[אוריינות נאמנות](/article/trustee-account-literacy-for-investors) לפני כל הפקדה.
+גם מיזם מעונות ליד נתיבות דורש אותן שאלות: היתרים, שימוש בקרקע, תקציב בנייה ונתיב כסף. ראו [בדיקות למיזמי מעונות](/article/netivot-student-housing-project-checks), וחזרו ל־[מדריך הגנת משקיעים](/article/investor-protection-re-due-diligence) ול־[אוריינות נאמנות](/article/trustee-account-literacy-for-investors) לפני כל הפקדה.
 
 ## שורה תחתונה
 
@@ -579,7 +579,7 @@ export const articleSeed: Article[] = [
 1. **הודאה בהסדר** ≠ סוף כל ההליכים האזרחיים האפשריים מול צדדים שלישיים.
 2. **בקשת הפרקליטות** היא עמדה — בית המשפט קובע.
 3. **תיקון כתב אישום** משנה את מסגרת העובדות המוסכמות; כדאי לקרוא את הדיווח המלא ולא רק את ה־H1.
-4. **שיעורי הגנה למשקיעים** חשובים יותר מכותרת עונש — חזרו ל־[מדריך הגנת משקיעים](/article/investor-protection-re-due-diligence) ול־[אוריינות נאמנות](/article/trustee-account-literacy-for-investors).
+4. **שיעורי הגנה למשקיעים** חשובים יותר מכותרת עונש — ראו [לקחים מדיווחים](/article/guy-avni-case-investor-lessons) ו־[בקשת עונש — הסבר](/article/prosecution-sentencing-request-explainer), וחזרו ל־[מדריך הגנת משקיעים](/article/investor-protection-re-due-diligence).
 
 ## שורה תחתונה
 
