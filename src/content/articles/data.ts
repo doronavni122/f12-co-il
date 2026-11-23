@@ -1,4 +1,5 @@
 import type { Article } from "@/lib/content/schema";
+import { batchNov23_2026 } from "./batch-nov23-2026";
 
 /** Seed articles — original Hebrew finance news-style copy for F12 v1. */
 export const articleSeed: Article[] = [
@@ -715,4 +716,5 @@ export const articleSeed: Article[] = [
 
 שיווק מיזמי נדל״ן חוצי־גבולות יכול להיות לגיטימי — אם התשובות לשאלות האלה כתובות, ניתנות לאימות, ומגיעות לפני ההעברה הראשונה.`,
   },
+  ...batchNov23_2026,
 ];
