@@ -9,6 +9,13 @@ export function absoluteUrl(path = "/"): string {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+const publisherLogo = {
+  "@type": "ImageObject" as const,
+  url: absoluteUrl("/images/og-default.svg"),
+  width: 1200,
+  height: 630,
+};
+
 export function buildPageMetadata({
   title,
   description,
@@ -70,6 +77,10 @@ export function buildPageMetadata({
 export function articleJsonLd(article: ArticleWithMeta) {
   const author = getAuthor(article.authorId);
   const category = getCategory(article.category);
+  const pageUrl = absoluteUrl(article.href);
+  const imageUrl = article.image.startsWith("http")
+    ? article.image
+    : absoluteUrl(article.image);
 
   return {
     "@context": "https://schema.org",
@@ -77,9 +88,12 @@ export function articleJsonLd(article: ArticleWithMeta) {
     headline: article.title,
     description: article.excerpt,
     image: [
-      article.image.startsWith("http")
-        ? article.image
-        : absoluteUrl(article.image),
+      {
+        "@type": "ImageObject",
+        url: imageUrl,
+        width: 1200,
+        height: 630,
+      },
     ],
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
@@ -89,16 +103,18 @@ export function articleJsonLd(article: ArticleWithMeta) {
       url: absoluteUrl(`/authors/${author.id}`),
     },
     publisher: {
-      "@type": "NewsMediaOrganization",
+      "@type": "Organization",
       name: siteConfig.name,
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl("/images/og-default.svg"),
-      },
+      url: siteConfig.url,
+      logo: publisherLogo,
     },
-    mainEntityOfPage: absoluteUrl(article.href),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
     articleSection: category.name,
     keywords: article.tags.join(", "),
-    inLanguage: "he-IL",
+    inLanguage: "he",
+    isAccessibleForFree: true,
   };
 }
