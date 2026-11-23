@@ -21,3 +21,4 @@
 15. enrich-seo-sitemap-rss-metadata , src/lib/seo.ts src/lib/seo/jsonld.ts src/app/sitemap.ts src/app/rss.xml src/app/article src/app/news src/app/not-found.tsx task_graph.log
 16. add-tag-index-and-tag-pages , src/app/tags src/components/layout/site-footer.tsx task_graph.log
 17. add-newsletter-waitlist-markets-share-polish , src/components/home src/app/newsletter src/app/api/newsletter src/components/newsletter src/components/article src/app/privacy src/app/authors task_graph.log
+18. add-vercel-speed-insights-dep , package.json pnpm-lock.yaml task_graph.log
