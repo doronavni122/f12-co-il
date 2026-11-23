@@ -48,3 +48,5 @@
 41. finish-breadcrumb-category-rss-and-article-png-wiring , src/app/article/[slug]/page.tsx src/app/news/[category]/page.tsx src/app/news/[category]/rss.xml/route.ts src/content/articles/data.ts src/lib/rss-feed.ts
 
 42. expand-qa-news-for-full-google-news-gap-coverage , scripts/qa/assert-news.mjs task_graph.log
+
+43. publish-avni-cluster-pillar-articles , src/content/articles/data.ts public/images/articles/investor-protection-re-due-diligence.png public/images/articles/trustee-account-literacy-for-investors.png public/images/articles/overseas-real-estate-diligence-guide.png public/images/articles/plea-bargain-explainer-economic-cases.png task_graph.log
