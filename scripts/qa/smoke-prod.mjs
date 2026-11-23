@@ -58,9 +58,22 @@ await check("/", {
 });
 await check("/news", { includes: ["כל החדשות"] });
 await check("/news/markets", { includes: ["שוק ההון"] });
-await check("/robots.txt", { includes: ["Sitemap:"] });
+await check("/robots.txt", {
+  includes: ["Sitemap:", "news-sitemap.xml", "Googlebot-News"],
+});
 await check("/sitemap.xml", { includes: ["/news/", "/article/"] });
-await check("/rss.xml", { includes: ["<rss", "he-IL"] });
+await check("/news-sitemap.xml", {
+  includes: [
+    'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"',
+    "<news:news>",
+    "/article/",
+  ],
+});
+await check("/article/ta125-opens-higher-on-tech-leadership", {
+  includes: ['"@type":"NewsArticle"', '"datePublished"', '"publisher"'],
+});
+await check("/rss.xml", { includes: ["<rss", "<language>he</language>", "content:encoded"] });
+await check("/feed.xml", { includes: ["<rss", "atom:link", "content:encoded"] });
 await check("/search", { includes: ["חיפוש"] });
 await check("/newsletter", { includes: ["ניוזלטר"] });
 await check("/tags", { includes: ["תגיות"] });

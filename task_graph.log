@@ -38,3 +38,4 @@
 31. enhance-rss-substantial-content-and-feed-xml , src/lib/rss-feed.ts src/app/rss.xml/route.ts src/app/feed.xml/route.ts src/app/layout.tsx
 32. strengthen-article-byline-datetime-and-og-authors , src/app/article/[slug]/page.tsx
 33. add-google-news-qa-assertions-and-smoke , scripts/qa/assert-news.mjs scripts/qa/smoke-news.mjs scripts/qa/assert-seo.mjs scripts/qa/run-all.mjs package.json
+34. extend-prod-smoke-for-news-sitemap-and-feed , scripts/qa/smoke-prod.mjs
