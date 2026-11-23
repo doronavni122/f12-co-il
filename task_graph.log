@@ -6,3 +6,4 @@
 5. add-rtl-design-shell-and-tokens , src/app/globals.css src/app/layout.tsx src/components/layout src/components/theme-toggle.tsx task_graph.log
 6. add-content-model-and-seed-articles , src/lib src/content public/images scripts/generate-article-svgs.mjs task_graph.log
 7. add-article-home-search-components , src/components/article src/components/home src/components/search task_graph.log
+8. add-pages-seo-rss-sitemap , src/app task_graph.log
