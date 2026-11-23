@@ -44,7 +44,7 @@ export async function generateMetadata({
     type: "article",
     publishedTime: article.publishedAt,
     modifiedTime: article.updatedAt ?? article.publishedAt,
-    authors: [author.name],
+    authors: [`${siteConfig.url}/authors/${author.id}`],
     section: category.name,
   });
 }
@@ -62,11 +62,23 @@ export default async function ArticlePage({
   const author = getAuthor(article.authorId);
   const category = getCategory(article.category);
   const related = getRelatedArticles(article, 3);
-  const published = new Date(article.publishedAt).toLocaleDateString("he-IL", {
+  const published = new Date(article.publishedAt).toLocaleString("he-IL", {
     year: "numeric",
     month: "long",
     day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
+  const modified =
+    article.updatedAt != null
+      ? new Date(article.updatedAt).toLocaleString("he-IL", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      : null;
   const jsonLd = articleJsonLd(article);
 
   return (
@@ -78,6 +90,7 @@ export default async function ArticlePage({
 
       <div className="mx-auto max-w-3xl">
         <p className="text-sm font-semibold text-brand">
+          <span className="sr-only">מדור: </span>
           <Link href={category.href}>{category.name}</Link>
         </p>
         <h1 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">
@@ -85,14 +98,29 @@ export default async function ArticlePage({
         </h1>
         <p className="mt-4 text-lg leading-8 text-muted">{article.excerpt}</p>
         <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
-          <Link
-            href={`/authors/${author.id}`}
-            className="font-medium text-foreground hover:text-brand"
-          >
-            {author.name}
-          </Link>
+          <span>
+            <span className="sr-only">מאת: </span>
+            <Link
+              href={`/authors/${author.id}`}
+              className="font-medium text-foreground hover:text-brand"
+            >
+              {author.name}
+            </Link>
+          </span>
           <span aria-hidden>·</span>
-          <time dateTime={article.publishedAt}>{published}</time>
+          <time dateTime={article.publishedAt}>
+            <span className="sr-only">פורסם: </span>
+            {published}
+          </time>
+          {modified && article.updatedAt ? (
+            <>
+              <span aria-hidden>·</span>
+              <time dateTime={article.updatedAt}>
+                <span className="sr-only">עודכן: </span>
+                עודכן {modified}
+              </time>
+            </>
+          ) : null}
           <span aria-hidden>·</span>
           <span>{article.readingTimeMinutes} דק׳ קריאה</span>
         </div>

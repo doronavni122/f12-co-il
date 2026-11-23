@@ -36,3 +36,4 @@
 29. strengthen-newsarticle-organization-website-jsonld , src/lib/seo.ts src/lib/seo/jsonld.ts
 30. add-google-news-sitemap-robots-and-recent-window , src/app/news-sitemap.xml/route.ts src/app/robots.ts src/lib/content/index.ts src/content/articles/data.ts src/lib/xml.ts
 31. enhance-rss-substantial-content-and-feed-xml , src/lib/rss-feed.ts src/app/rss.xml/route.ts src/app/feed.xml/route.ts src/app/layout.tsx
+32. strengthen-article-byline-datetime-and-og-authors , src/app/article/[slug]/page.tsx
