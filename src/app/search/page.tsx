@@ -1,5 +1,5 @@
 import { SearchClient } from "@/components/search/search-client";
-import { getAllArticles } from "@/lib/content";
+import { getSearchIndex } from "@/lib/content";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -13,7 +13,7 @@ export default async function SearchPage({
 }: PageProps<"/search">) {
   const sp = await searchParams;
   const q = typeof sp.q === "string" ? sp.q : "";
-  const articles = getAllArticles();
+  const articles = getSearchIndex();
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 md:px-6">

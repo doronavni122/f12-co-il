@@ -91,6 +91,48 @@ export function searchArticles(query: string): ArticleWithMeta[] {
   });
 }
 
+export type SearchArticleHit = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  tags: string[];
+  href: string;
+  category: CategorySlug;
+};
+
+export function getSearchIndex(): SearchArticleHit[] {
+  return allArticles.map((a) => ({
+    slug: a.slug,
+    title: a.title,
+    excerpt: a.excerpt,
+    tags: a.tags,
+    href: a.href,
+    category: a.category,
+  }));
+}
+
+export function getAllTags(): string[] {
+  const set = new Set<string>();
+  for (const article of allArticles) {
+    for (const tag of article.tags) {
+      set.add(tag);
+    }
+  }
+  return [...set].sort((a, b) => a.localeCompare(b, "he"));
+}
+
+export function getArticlesByTag(tag: string): ArticleWithMeta[] {
+  const normalized = tag.trim().toLowerCase();
+  return allArticles.filter((a) =>
+    a.tags.some((t) => t.toLowerCase() === normalized),
+  );
+}
+
+/** Path segment for tag routes (Next encodes once). */
+export function slugifyTag(tag: string): string {
+  return tag.trim();
+}
+
 export {
   authors,
   getAuthor,
