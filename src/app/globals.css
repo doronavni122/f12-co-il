@@ -1,26 +1,198 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f8fc;
+  --foreground: #0b1220;
+  --surface: #ffffff;
+  --surface-muted: #eef2f8;
+  --border: #d7e0ee;
+  --muted: #5b6b82;
+  --brand: #0b5fff;
+  --brand-strong: #0847c7;
+  --brand-soft: #dbe7ff;
+  --accent: #0ea5e9;
+  --danger: #dc2626;
+  --success: #059669;
+  --hero-glow: rgba(11, 95, 255, 0.14);
+  --shadow-soft: 0 18px 50px rgba(11, 25, 55, 0.08);
+}
+
+.dark {
+  --background: #070b14;
+  --foreground: #e8eef9;
+  --surface: #0e1524;
+  --surface-muted: #141c2e;
+  --border: #243149;
+  --muted: #93a4bd;
+  --brand: #4d8dff;
+  --brand-strong: #7aadff;
+  --brand-soft: #132445;
+  --accent: #38bdf8;
+  --danger: #f87171;
+  --success: #34d399;
+  --hero-glow: rgba(77, 141, 255, 0.18);
+  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --font-sans: var(--font-heebo);
+  --font-display: var(--font-rubik);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(1200px 500px at 100% -10%, var(--hero-glow), transparent 60%),
+    radial-gradient(900px 420px at 0% 0%, rgba(14, 165, 233, 0.08), transparent 55%),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-heebo), system-ui, sans-serif;
+  min-height: 100%;
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose-article {
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: color-mix(in oklab, var(--foreground) 92%, var(--muted));
+}
+
+.prose-article h2 {
+  font-family: var(--font-rubik), var(--font-heebo), sans-serif;
+  font-size: 1.65rem;
+  line-height: 1.35;
+  margin-top: 2.25rem;
+  margin-bottom: 0.85rem;
+  color: var(--foreground);
+}
+
+.prose-article h3 {
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.65rem;
+  color: var(--foreground);
+}
+
+.prose-article p {
+  margin-bottom: 1.15rem;
+}
+
+.prose-article ul,
+.prose-article ol {
+  margin: 0 0 1.15rem;
+  padding-inline-start: 1.35rem;
+}
+
+.prose-article li {
+  margin-bottom: 0.45rem;
+}
+
+.prose-article strong {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.prose-article blockquote {
+  border-inline-start: 3px solid var(--brand);
+  background: var(--surface-muted);
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.1rem;
+  color: var(--muted);
+}
+
+.markets-ticker {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 38s linear infinite;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 420ms ease-out both;
+}
+
+.animate-rise-delay {
+  animation: rise-in 420ms ease-out 120ms both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise-in 420ms ease-out 220ms both;
+}
+
+.hero-glow-line {
+  animation: pulse-line 3.2s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker,
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-rise-delay-2,
+  .hero-glow-line {
+    animation: none;
+  }
+}
+
+
+.font-display {
+  font-family: var(--font-rubik), var(--font-heebo), sans-serif;
 }

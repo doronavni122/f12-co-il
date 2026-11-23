@@ -3,3 +3,4 @@
 
 3. add-vercel-json-framework , vercel.json
 4. add-vercel-analytics-dependency , package.json pnpm-lock.yaml
+5. add-rtl-design-shell-and-tokens , src/app/globals.css src/app/layout.tsx src/components/layout src/components/theme-toggle.tsx task_graph.log
