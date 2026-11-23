@@ -15,13 +15,13 @@ export function NewsletterCta() {
           סיכום שווקים יומי — בלי רעש
         </h2>
         <p className="mt-3 text-sm leading-7 opacity-85 md:text-base">
-          כותרות נבחרות, מהלך הריבית, ומה שחשוב לתיק — ישירות למייל.
+          כותרות נבחרות ומה שחשוב לתיק. הרשמה לרשימת המתנה — נפתח בקרוב.
         </p>
         <Link
           href="/newsletter"
           className="mt-6 inline-flex h-11 items-center rounded-full bg-[var(--brand)] px-5 text-sm font-semibold text-white transition hover:bg-[var(--brand-strong)]"
         >
-          להרשמה
+          לרשימת המתנה
         </Link>
       </div>
     </section>

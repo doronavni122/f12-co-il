@@ -14,14 +14,25 @@ export default function PrivacyPage() {
       <div className="prose-article mt-8">
         <p>
           {siteConfig.name} מכבד את פרטיות המשתמשים. אנו עשויים לאסוף נתוני שימוש
-          בסיסיים (כגון דפים שנצפו ומדידת ביצועים) לצורך שיפור האתר.
+          בסיסיים (צפיות עמודים ומדידת ביצועים דרך Vercel Analytics / Speed
+          Insights) לצורך שיפור האתר.
         </p>
         <p>
-          אם נפעיל ניוזלטר, כתובת האימייל תשמש רק למשלוח עדכונים ותוסר לפי בקשה.
+          רשימת המתנה לניוזלטר: כתובת האימייל שתזינו בטופס תשמש רק ליצירת קשר
+          בנוגע לדיוור, ותוסר לפי בקשה ל-
+          <a href={`mailto:${siteConfig.contactEmail}`}>
+            {siteConfig.contactEmail}
+          </a>
+          .
+        </p>
+        <p>
+          העדפת ערכת נושא נשמרת מקומית בדפדפן (`f12-theme`) ואינה נשלחת לשרת.
         </p>
         <p>
           לפניות בנושא פרטיות:{" "}
-          <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+          <a href={`mailto:${siteConfig.contactEmail}`}>
+            {siteConfig.contactEmail}
+          </a>
         </p>
       </div>
     </div>

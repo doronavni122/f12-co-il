@@ -43,11 +43,15 @@ export default async function AuthorPage({
         <p className="mt-2 text-brand">{author.title}</p>
         <p className="mt-3 text-muted">{author.bio}</p>
       </header>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
-      </div>
+      {articles.length === 0 ? (
+        <p className="text-muted">לכותב/ת זה עדיין אין כתבות בארכיון.</p>
+      ) : (
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
