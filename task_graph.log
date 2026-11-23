@@ -14,3 +14,4 @@
 8. add-app-routes-seo-legal-rss , src/app
 9. configure-next-images-analytics-env , next.config.ts package.json .env.example vercel.json .gitignore README.md
 10. add-dev-env-example , .env.development.example task_graph.log
+11. unify-category-hrefs-to-news , src/lib/content/categories.ts task_graph.log

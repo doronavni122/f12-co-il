@@ -12,37 +12,37 @@ export const categories: Category[] = [
     slug: "markets",
     name: "שוק ההון",
     description: "בורסה, מניות, אג״ח ומדדים בישראל ובעולם.",
-    href: "/category/markets",
+    href: "/news/markets",
   },
   {
     slug: "macro",
     name: "מאקרו",
     description: "ריבית, אינפלציה, מדיניות מוניטרית וכלכלה ריאלית.",
-    href: "/category/macro",
+    href: "/news/macro",
   },
   {
     slug: "real-estate-finance",
     name: "נדל״ן",
     description: "מימון נדל״ן, משכנתאות, תשואות ותזרימי דיור.",
-    href: "/category/real-estate-finance",
+    href: "/news/real-estate-finance",
   },
   {
     slug: "fintech",
     name: "טק פיננסי",
     description: "בנקאות דיגיטלית, תשלומים, רגולציה וחדשנות פיננסית.",
-    href: "/category/fintech",
+    href: "/news/fintech",
   },
   {
     slug: "crypto",
     name: "מט״ח וקריפטו",
     description: "מטבעות, שקל־דולר, נזילות דיגיטלית והשפעה על תיקים.",
-    href: "/category/crypto",
+    href: "/news/crypto",
   },
   {
     slug: "opinion",
     name: "דעות",
     description: "ניתוחים ופרשנות של עורכי F12 וכותבים אורחים.",
-    href: "/category/opinion",
+    href: "/news/opinion",
   },
 ];
 
