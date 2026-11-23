@@ -26,6 +26,9 @@ assert(seo.includes("mainEntityOfPage") && seo.includes("articleSection"), "page
 assert(seo.includes('inLanguage: "he"'), "inLanguage he");
 assert(seo.includes("publishedTime") && seo.includes("modifiedTime"), "OG times");
 assert(seo.includes("tags"), "OG tags");
+assert(seo.includes("isAccessibleForFree"), "isAccessibleForFree");
+assert(seo.includes("wordCount"), "wordCount");
+assert(seo.includes("caption"), "image caption");
 
 const jsonld = read("src/lib/seo/jsonld.ts");
 assert(jsonld.includes('"@type": "WebSite"'), "WebSite");
@@ -34,8 +37,11 @@ assert(jsonld.includes("sameAs") && jsonld.includes("logo"), "sameAs+logo");
 assert(jsonld.includes("logoImage") || jsonld.includes("logo.png"), "PNG logo path");
 assert(!jsonld.includes("og-default.svg"), "no SVG logo");
 assert(jsonld.includes("publishingPrinciples") && jsonld.includes("/editorial-policy"), "editorial policy");
+assert(jsonld.includes("ethicsPolicy"), "ethicsPolicy");
 assert(jsonld.includes("correctionsPolicy") && jsonld.includes("/corrections"), "corrections");
+assert(jsonld.includes("masthead") && jsonld.includes("/about"), "masthead");
 assert(jsonld.includes("ownershipFundingInfo") && jsonld.includes("/about"), "about");
+assert(jsonld.includes("contactPoint"), "contactPoint");
 assert(jsonld.includes("BreadcrumbList") && jsonld.includes("personJsonLd"), "breadcrumb+person");
 assert(jsonld.includes("categoryBreadcrumbJsonLd"), "category breadcrumb");
 
@@ -49,17 +55,43 @@ assert(robots.includes("news-sitemap.xml") && robots.includes("sitemap.xml"), "s
 
 const rss = read("src/lib/rss-feed.ts");
 assert(rss.includes("content:encoded") && rss.includes("atom:link"), "rss content+atom");
+assert(rss.includes('rel="alternate"'), "atom alternate");
+assert(rss.includes("lastBuildDate"), "lastBuildDate");
 assert(rss.includes("guid isPermaLink") && rss.includes("pubDate"), "guid+pubDate");
 assert(rss.includes("<image>") && rss.includes("atom:updated"), "image+updated");
+assert(rss.includes("media:content"), "media:content");
+assert(rss.includes("buildCategoryRssXml"), "category RSS builder");
 
 const articlePage = read("src/app/article/[slug]/page.tsx");
 assert(articlePage.includes("dateTime={article.publishedAt}"), "visible date");
 assert(articlePage.includes("publishedTime") && articlePage.includes("modifiedTime"), "OG article times");
+assert(articlePage.includes("tags: article.tags"), "article:tag");
 assert(articlePage.includes("articleBreadcrumbJsonLd"), "article breadcrumb");
 
 const authorPage = read("src/app/authors/[slug]/page.tsx");
 assert(authorPage.includes("personJsonLd"), "author Person JSON-LD");
 assert(existsSync(resolve(root, "src/app/news/[category]/rss.xml/route.ts")), "category RSS");
+
+const categoryPage = read("src/app/news/[category]/page.tsx");
+assert(categoryPage.includes("categoryBreadcrumbJsonLd"), "category page BreadcrumbList");
+
+const layout = read("src/app/layout.tsx");
+assert(
+  layout.includes("GOOGLE_SITE_VERIFICATION") ||
+    layout.includes("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"),
+  "GSC verification env",
+);
+assert(layout.includes("verification"), "verification metadata");
+
+const envExample = read(".env.example");
+assert(envExample.includes("GOOGLE_SITE_VERIFICATION"), ".env.example GSC");
+
+const sitemap = read("src/app/sitemap.ts");
+assert(sitemap.includes("/editorial-policy") && sitemap.includes("/corrections"), "policy sitemap");
+
+const articles = read("src/content/articles/data.ts");
+assert(articles.includes("updatedAt:"), "updatedAt populated");
+assert(!articles.includes('.svg"'), "no SVG article heroes");
 
 if (failures.length) {
   console.error("[qa:news] FAILED");

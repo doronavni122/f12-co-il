@@ -46,3 +46,5 @@
 39. expand-qa-news-for-png-policy-breadcrumb-person , scripts/qa/assert-news.mjs
 40. wire-google-site-verification-metadata , src/app/layout.tsx src/lib/env.ts .env.example
 41. finish-breadcrumb-category-rss-and-article-png-wiring , src/app/article/[slug]/page.tsx src/app/news/[category]/page.tsx src/app/news/[category]/rss.xml/route.ts src/content/articles/data.ts src/lib/rss-feed.ts
+
+42. expand-qa-news-for-full-google-news-gap-coverage , scripts/qa/assert-news.mjs task_graph.log
