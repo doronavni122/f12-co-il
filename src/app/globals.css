@@ -56,7 +56,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -145,27 +145,26 @@ a {
   animation: ticker 38s linear infinite;
 }
 
+/* Above-fold hero must stay opacity:1 for LCP — motion is transform-only */
 @keyframes rise-in {
   from {
-    opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 .animate-rise {
-  animation: rise-in 420ms ease-out both;
+  animation: rise-in 420ms ease-out;
 }
 
 .animate-rise-delay {
-  animation: rise-in 420ms ease-out 120ms both;
+  animation: rise-in 420ms ease-out 120ms;
 }
 
 .animate-rise-delay-2 {
-  animation: rise-in 420ms ease-out 220ms both;
+  animation: rise-in 420ms ease-out 220ms;
 }
 
 .hero-glow-line {
@@ -192,6 +191,31 @@ a {
   }
 }
 
+@media print {
+  header,
+  footer,
+  .markets-ticker,
+  [aria-label="שיתוף"],
+  [aria-label="ניווט נייד"],
+  [aria-label="ניווט ראשי"] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .prose-article {
+    max-width: 100%;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+}
 
 .font-display {
   font-family: var(--font-rubik), var(--font-heebo), sans-serif;

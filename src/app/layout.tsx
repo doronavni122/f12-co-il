@@ -1,21 +1,30 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Heebo, Rubik } from "next/font/google";
 import { SiteShell } from "@/components/layout/site-shell";
+import { themeInitScript } from "@/components/theme-toggle";
+import { getEnv } from "@/lib/env";
 import { siteConfig } from "@/lib/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
 import "./globals.css";
 
+getEnv();
+
 const heebo = Heebo({
   variable: "--font-heebo",
   subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: true,
 });
 
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["hebrew", "latin"],
+  weight: ["600", "700"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -86,6 +95,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${heebo.variable} ${rubik.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <script
           type="application/ld+json"
@@ -93,6 +105,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <SiteShell>{children}</SiteShell>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

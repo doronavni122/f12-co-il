@@ -103,12 +103,8 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {latest.slice(0, 6).map((article, i) => (
-              <ArticleCard
-                key={article.slug}
-                article={article}
-                priority={i < 2}
-              />
+            {latest.slice(0, 6).map((article) => (
+              <ArticleCard key={article.slug} article={article} />
             ))}
           </div>
         </section>
