@@ -11,6 +11,10 @@ import "./globals.css";
 
 getEnv();
 
+const googleSiteVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+  process.env.GOOGLE_SITE_VERIFICATION;
+
 const heebo = Heebo({
   variable: "--font-heebo",
   subsets: ["hebrew", "latin"],
@@ -77,6 +81,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: googleSiteVerification
+    ? { google: googleSiteVerification }
+    : undefined,
 };
 
 export const viewport: Viewport = {

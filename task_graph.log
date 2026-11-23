@@ -44,3 +44,4 @@
 37. wire-article-author-breadcrumbs-person-and-png-images , src/app/article/[slug]/page.tsx src/app/authors/[slug]/page.tsx src/app/news/[category]/page.tsx src/content/articles/data.ts public/images/articles
 38. harden-rss-and-add-category-feeds , src/lib/rss-feed.ts src/app/news/[category]/rss.xml/route.ts
 39. expand-qa-news-for-png-policy-breadcrumb-person , scripts/qa/assert-news.mjs
+40. wire-google-site-verification-metadata , src/app/layout.tsx src/lib/env.ts .env.example
