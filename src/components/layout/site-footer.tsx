@@ -55,6 +55,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link href="/tags" className="hover:text-brand">
+                תגיות
+              </Link>
+            </li>
+            <li>
               <Link href="/privacy" className="hover:text-brand">
                 פרטיות
               </Link>

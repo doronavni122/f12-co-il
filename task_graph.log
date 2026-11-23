@@ -19,3 +19,4 @@
 13. split-header-theme-bootstrap-lcp , src/components/layout src/components/theme-toggle.tsx src/app/layout.tsx src/app/globals.css src/app/page.tsx task_graph.log
 14. slim-search-client-index , src/lib/content/index.ts src/app/search src/components/search task_graph.log
 15. enrich-seo-sitemap-rss-metadata , src/lib/seo.ts src/lib/seo/jsonld.ts src/app/sitemap.ts src/app/rss.xml src/app/article src/app/news src/app/not-found.tsx task_graph.log
+16. add-tag-index-and-tag-pages , src/app/tags src/components/layout/site-footer.tsx task_graph.log
