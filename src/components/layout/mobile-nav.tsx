@@ -10,6 +10,10 @@ const mobileLinks = [
   { href: "/authors", label: "כותבים" },
   { href: "/about", label: "אודות" },
   { href: "/contact", label: "יצירת קשר" },
+  { href: "/editorial-policy", label: "מדיניות עריכה" },
+  { href: "/corrections", label: "תיקונים" },
+  { href: "/privacy", label: "פרטיות" },
+  { href: "/terms", label: "תנאי שימוש" },
   { href: "/search", label: "חיפוש" },
   { href: "/newsletter", label: "ניוזלטר", emphasize: true as const },
 ];

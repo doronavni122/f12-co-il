@@ -13,6 +13,13 @@ export function SiteFooter() {
           <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
             {siteConfig.description}
           </p>
+          <p className="mt-4 max-w-sm text-sm leading-7 text-muted">
+            {siteConfig.ethicsBlurb}{" "}
+            <Link href="/editorial-policy" className="text-brand hover:underline">
+              מדיניות עריכה
+            </Link>
+            .
+          </p>
         </div>
         <div>
           <p className="text-sm font-semibold">מדורים</p>
@@ -35,13 +42,33 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link href="/contact" className="hover:text-brand">
+                יצירת קשר
+              </Link>
+            </li>
+            <li>
+              <Link href="/editorial-policy" className="hover:text-brand">
+                מדיניות עריכה
+              </Link>
+            </li>
+            <li>
+              <Link href="/corrections" className="hover:text-brand">
+                תיקונים
+              </Link>
+            </li>
+            <li>
               <Link href="/authors" className="hover:text-brand">
                 כותבים
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-brand">
-                יצירת קשר
+              <Link href="/privacy" className="hover:text-brand">
+                פרטיות
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="hover:text-brand">
+                תנאי שימוש
               </Link>
             </li>
             <li>
@@ -60,16 +87,6 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-brand">
-                פרטיות
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-brand">
-                תנאי שימוש
-              </Link>
-            </li>
-            <li>
               <a href="/rss.xml" className="hover:text-brand">
                 RSS
               </a>
@@ -80,7 +97,8 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-muted md:flex-row md:items-center md:justify-between md:px-6">
           <p>
-            © {COPYRIGHT_YEAR} {siteConfig.legalName}. כל הזכויות שמורות.
+            © {COPYRIGHT_YEAR} {siteConfig.legalName}. כל הזכויות שמורות.{" "}
+            {siteConfig.location.display}.
           </p>
           <p>תוכן חינוכי/עיתונאי — אינו ייעוץ השקעות.</p>
         </div>

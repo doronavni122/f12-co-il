@@ -31,3 +31,4 @@
 24. add-editorial-policy-transparency-page , src/app/editorial-policy/page.tsx task_graph.log
 25. add-corrections-policy-request-page , src/app/corrections/page.tsx task_graph.log
 26. enrich-author-public-bios-and-pages , src/lib/content/authors.ts src/app/authors/[slug]/page.tsx task_graph.log
+27. wire-trust-pages-into-nav-footer-sitemap , src/components/layout/site-footer.tsx src/components/layout/mobile-nav.tsx src/app/sitemap.ts task_graph.log
