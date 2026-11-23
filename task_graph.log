@@ -30,3 +30,4 @@
 23. add-contact-form-and-editorial-channels , src/app/contact/page.tsx src/components/contact/contact-form.tsx src/app/api/contact/route.ts task_graph.log
 24. add-editorial-policy-transparency-page , src/app/editorial-policy/page.tsx task_graph.log
 25. add-corrections-policy-request-page , src/app/corrections/page.tsx task_graph.log
+26. enrich-author-public-bios-and-pages , src/lib/content/authors.ts src/app/authors/[slug]/page.tsx task_graph.log
