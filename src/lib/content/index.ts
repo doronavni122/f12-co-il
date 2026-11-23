@@ -2,7 +2,12 @@ import { articles as rawArticles } from "@/content/articles";
 import { estimateReadingTimeMinutes } from "@/lib/reading-time";
 import { authors, getAuthor } from "./authors";
 import { categories, getCategory, isCategorySlug } from "./categories";
-import { articleSchema, type Article, type CategorySlug } from "./schema";
+import {
+  articleSchema,
+  type Article,
+  type Author,
+  type CategorySlug,
+} from "./schema";
 
 export type ArticleWithMeta = Article & {
   readingTimeMinutes: number;
@@ -147,5 +152,6 @@ export {
   categories,
   getCategory,
   isCategorySlug,
+  type Author,
   type CategorySlug,
 };

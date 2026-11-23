@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl } from "@/lib/absolute-url";
 import type { ArticleWithMeta } from "@/lib/content";
 import { getAuthor, getCategory } from "@/lib/content";
+import { publisherLogo } from "@/lib/seo/jsonld";
+import { siteConfig } from "@/lib/site";
 
-export function absoluteUrl(path = "/"): string {
-  const base = siteConfig.url.replace(/\/$/, "");
-  if (!path || path === "/") return base;
-  return `${base}${path.startsWith("/") ? path : `/${path}`}`;
-}
-
-const publisherLogo = {
-  "@type": "ImageObject" as const,
-  url: absoluteUrl("/images/og-default.svg"),
-  width: 1200,
-  height: 630,
-};
+export { absoluteUrl };
 
 export function buildPageMetadata({
   title,
@@ -81,6 +72,7 @@ export function articleJsonLd(article: ArticleWithMeta) {
   const imageUrl = article.image.startsWith("http")
     ? article.image
     : absoluteUrl(article.image);
+  const dateModified = article.updatedAt ?? article.publishedAt;
 
   return {
     "@context": "https://schema.org",
@@ -96,14 +88,16 @@ export function articleJsonLd(article: ArticleWithMeta) {
       },
     ],
     datePublished: article.publishedAt,
-    dateModified: article.updatedAt ?? article.publishedAt,
+    dateModified,
     author: {
       "@type": "Person",
+      "@id": absoluteUrl(`/authors/${author.id}#person`),
       name: author.name,
       url: absoluteUrl(`/authors/${author.id}`),
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
       logo: publisherLogo,
@@ -118,3 +112,11 @@ export function articleJsonLd(article: ArticleWithMeta) {
     isAccessibleForFree: true,
   };
 }
+
+export {
+  articleBreadcrumbJsonLd,
+  breadcrumbListJsonLd,
+  organizationJsonLd,
+  personJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo/jsonld";

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/article/article-card";
 import { authors, getArticlesByAuthor, getAuthor } from "@/lib/content";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, personJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -37,9 +37,14 @@ export default async function AuthorPage({
     notFound();
   }
   const articles = getArticlesByAuthor(author.id);
+  const jsonLd = personJsonLd(author);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="mb-10 max-w-2xl">
         <p className="text-sm font-medium text-muted">
           <Link href="/authors" className="hover:text-brand">
