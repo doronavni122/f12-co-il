@@ -23,3 +23,5 @@
 17. add-newsletter-waitlist-markets-share-polish , src/components/home src/app/newsletter src/app/api/newsletter src/components/newsletter src/components/article src/app/privacy src/app/authors task_graph.log
 18. add-vercel-speed-insights-dep , package.json pnpm-lock.yaml task_graph.log
 19. add-design-qa-pipelines-and-ci , scripts/qa .github/workflows/qa.yml package.json task_graph.log
+
+20. fix-qa-smoke-fetch-hang-exit , scripts/qa/smoke-prod.mjs task_graph.log

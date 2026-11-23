@@ -7,6 +7,7 @@ const base = (process.env.BASE_URL ?? "https://f12-co-il.vercel.app").replace(
   /\/$/,
   "",
 );
+const FETCH_TIMEOUT_MS = 15_000;
 const failures = [];
 
 async function check(path, opts = {}) {
@@ -15,6 +16,7 @@ async function check(path, opts = {}) {
     const res = await fetch(url, {
       redirect: opts.follow === false ? "manual" : "follow",
       headers: { "user-agent": "f12-qa-smoke/1.0" },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     const ok =
       opts.expectStatus != null
@@ -22,6 +24,7 @@ async function check(path, opts = {}) {
         : res.ok;
     if (!ok) {
       failures.push(`${path} → HTTP ${res.status}`);
+      await res.arrayBuffer().catch(() => undefined);
       return null;
     }
     if (opts.expectHeader) {
@@ -40,7 +43,9 @@ async function check(path, opts = {}) {
       }
       return text;
     }
-    return res;
+    // Drain body so undici sockets are released and Node can exit.
+    await res.arrayBuffer().catch(() => undefined);
+    return null;
   } catch (error) {
     failures.push(`${path} fetch error: ${error}`);
     return null;
@@ -67,3 +72,4 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(`[qa:smoke] ok against ${base}`);
+process.exit(0);
