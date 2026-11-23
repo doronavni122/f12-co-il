@@ -41,3 +41,4 @@
 34. extend-prod-smoke-for-news-sitemap-and-feed , scripts/qa/smoke-prod.mjs
 35. add-png-publisher-logo-and-og-default-assets , public/images/logo.png public/images/og-default.png public/images/publisher-logo.png src/lib/site.ts src/lib/absolute-url.ts
 36. add-org-policy-urls-breadcrumbs-and-person-jsonld , src/lib/seo/jsonld.ts src/lib/seo.ts src/lib/content/index.ts
+37. wire-article-author-breadcrumbs-person-and-png-images , src/app/article/[slug]/page.tsx src/app/authors/[slug]/page.tsx src/app/news/[category]/page.tsx src/content/articles/data.ts public/images/articles
