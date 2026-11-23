@@ -8,3 +8,4 @@
 7. add-article-home-search-components , src/components/article src/components/home src/components/search task_graph.log
 8. add-pages-seo-rss-sitemap , src/app task_graph.log
 9. add-env-examples-and-readme , .env.example .env.development.example README.md package.json next.config.ts vercel.json .gitignore task_graph.log
+5. add-content-model-authors-categories-schema , src/lib/content src/lib/site.ts src/lib/env.ts src/lib/reading-time.ts src/lib/seo.ts src/lib/seo/jsonld.ts
