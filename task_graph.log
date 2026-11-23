@@ -29,3 +29,4 @@
 22. strengthen-about-publisher-transparency-page , src/app/about/page.tsx task_graph.log
 23. add-contact-form-and-editorial-channels , src/app/contact/page.tsx src/components/contact/contact-form.tsx src/app/api/contact/route.ts task_graph.log
 24. add-editorial-policy-transparency-page , src/app/editorial-policy/page.tsx task_graph.log
+25. add-corrections-policy-request-page , src/app/corrections/page.tsx task_graph.log
