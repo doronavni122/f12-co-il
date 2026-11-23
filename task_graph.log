@@ -7,3 +7,4 @@
 6. add-content-model-and-seed-articles , src/lib src/content public/images scripts/generate-article-svgs.mjs task_graph.log
 7. add-article-home-search-components , src/components/article src/components/home src/components/search task_graph.log
 8. add-pages-seo-rss-sitemap , src/app task_graph.log
+9. add-env-examples-and-readme , .env.example .env.development.example README.md package.json next.config.ts vercel.json .gitignore task_graph.log
