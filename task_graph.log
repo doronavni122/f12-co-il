@@ -2,3 +2,4 @@
 2. add-content-deps-zod-markdown , package.json pnpm-lock.yaml task_graph.log
 
 3. add-vercel-json-framework , vercel.json
+4. add-vercel-analytics-dependency , package.json pnpm-lock.yaml
