@@ -15,3 +15,4 @@
 9. configure-next-images-analytics-env , next.config.ts package.json .env.example vercel.json .gitignore README.md
 10. add-dev-env-example , .env.development.example task_graph.log
 11. unify-category-hrefs-to-news , src/lib/content/categories.ts task_graph.log
+12. add-security-headers-next-vercel , next.config.ts vercel.json task_graph.log
