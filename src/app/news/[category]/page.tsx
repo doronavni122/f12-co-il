@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/article/article-card";
 import {
@@ -6,7 +7,7 @@ import {
   getCategory,
   isCategorySlug,
 } from "@/lib/content";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, categoryBreadcrumbJsonLd } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -40,15 +41,47 @@ export default async function CategoryPage({ params }: Props) {
 
   const cat = getCategory(category);
   const articles = getArticlesByCategory(category);
+  const jsonLd = categoryBreadcrumbJsonLd(category);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="mb-8">
+        <nav aria-label="פירורי לחם" className="mb-4 text-sm text-muted">
+          <ol className="flex flex-wrap items-center gap-1">
+            <li>
+              <Link href="/" className="hover:text-brand">
+                דף הבית
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li>
+              <Link href="/news" className="hover:text-brand">
+                חדשות
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li className="text-foreground" aria-current="page">
+              {cat.name}
+            </li>
+          </ol>
+        </nav>
         <p className="text-sm font-semibold text-brand">מדור</p>
         <h1 className="mt-2 font-display text-3xl font-bold md:text-4xl">
           {cat.name}
         </h1>
         <p className="mt-3 max-w-2xl text-muted">{cat.description}</p>
+        <p className="mt-3 text-sm">
+          <Link
+            href={`/news/${category}/rss.xml`}
+            className="text-brand hover:underline"
+          >
+            RSS למדור זה
+          </Link>
+        </p>
       </header>
       {articles.length === 0 ? (
         <p className="text-muted">אין עדיין כתבות במדור זה.</p>

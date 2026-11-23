@@ -1,4 +1,5 @@
 import { getAllArticles, getAuthor, getCategory } from "@/lib/content";
+import type { ArticleWithMeta, CategorySlug } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 import { escapeXml } from "@/lib/xml";
 
@@ -54,28 +55,24 @@ function enclosureType(imageUrl: string): string {
   return "image/png";
 }
 
-export function buildRssXml(selfPath: "/rss.xml" | "/feed.xml"): string {
-  const articles = getAllArticles();
-  const selfUrl = `${siteConfig.url}${selfPath}`;
-  const logoUrl = `${siteConfig.url}${siteConfig.logoImage}`;
-  const items = articles
-    .map((article) => {
-      const link = `${siteConfig.url}${article.href}`;
-      const author = getAuthor(article.authorId);
-      const category = getCategory(article.category);
-      const imageUrl = article.image.startsWith("http")
-        ? article.image
-        : `${siteConfig.url}${article.image}`;
-      const modified = article.updatedAt ?? article.publishedAt;
-      const contentHtml = cdataSafe(
-        [
-          `<p>${escapeXml(article.excerpt)}</p>`,
-          markdownToRssHtml(article.body),
-          `<p><img src="${escapeXml(imageUrl)}" alt="${escapeXml(article.imageAlt)}" width="1200" height="630" /></p>`,
-        ].join("\n"),
-      );
+function itemXml(article: ArticleWithMeta): string {
+  const link = `${siteConfig.url}${article.href}`;
+  const author = getAuthor(article.authorId);
+  const category = getCategory(article.category);
+  const imageUrl = article.image.startsWith("http")
+    ? article.image
+    : `${siteConfig.url}${article.image}`;
+  const modified = article.updatedAt ?? article.publishedAt;
+  const mime = enclosureType(imageUrl);
+  const contentHtml = cdataSafe(
+    [
+      `<p>${escapeXml(article.excerpt)}</p>`,
+      markdownToRssHtml(article.body),
+      `<p><img src="${escapeXml(imageUrl)}" alt="${escapeXml(article.imageAlt)}" width="1200" height="630" /></p>`,
+    ].join("\n"),
+  );
 
-      return `<item>
+  return `<item>
   <title>${escapeXml(article.title)}</title>
   <link>${escapeXml(link)}</link>
   <guid isPermaLink="true">${escapeXml(link)}</guid>
@@ -86,15 +83,26 @@ export function buildRssXml(selfPath: "/rss.xml" | "/feed.xml"): string {
   <author>${escapeXml(`${siteConfig.contactEmail} (${author.name})`)}</author>
   <description>${escapeXml(article.excerpt)}</description>
   <content:encoded><![CDATA[${contentHtml}]]></content:encoded>
-  <enclosure url="${escapeXml(imageUrl)}" type="${enclosureType(imageUrl)}" length="0" />
+  <enclosure url="${escapeXml(imageUrl)}" type="${mime}" length="0" />
+  <media:content url="${escapeXml(imageUrl)}" type="${mime}" medium="image" width="1200" height="630" />
 </item>`;
-    })
-    .join("\n");
+}
+
+export function buildRssXml(
+  selfPath: string,
+  articles: ArticleWithMeta[] = getAllArticles(),
+  channelTitle: string = siteConfig.name,
+): string {
+  const selfUrl = selfPath.startsWith("http")
+    ? selfPath
+    : `${siteConfig.url}${selfPath}`;
+  const logoUrl = `${siteConfig.url}${siteConfig.logoImage}`;
+  const items = articles.map(itemXml).join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>${escapeXml(siteConfig.name)}</title>
+    <title>${escapeXml(channelTitle)}</title>
     <link>${escapeXml(siteConfig.url)}</link>
     <description>${escapeXml(siteConfig.description)}</description>
     <language>he</language>
@@ -102,6 +110,7 @@ export function buildRssXml(selfPath: "/rss.xml" | "/feed.xml"): string {
     <generator>F12</generator>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${escapeXml(selfUrl)}" rel="self" type="application/rss+xml" />
+    <atom:link href="${escapeXml(siteConfig.url)}" rel="alternate" type="text/html" />
     <image>
       <url>${escapeXml(logoUrl)}</url>
       <title>${escapeXml(siteConfig.name)}</title>
@@ -114,10 +123,23 @@ export function buildRssXml(selfPath: "/rss.xml" | "/feed.xml"): string {
 </rss>`;
 }
 
-export function rssResponse(selfPath: "/rss.xml" | "/feed.xml"): Response {
+export function buildCategoryRssXml(category: CategorySlug): string {
+  const cat = getCategory(category);
+  const articles = getAllArticles().filter((a) => a.category === category);
+  return buildRssXml(
+    `/news/${category}/rss.xml`,
+    articles,
+    `${siteConfig.name} — ${cat.name}`,
+  );
+}
+
+export function rssResponse(
+  selfPath: "/rss.xml" | "/feed.xml" | string,
+  xml?: string,
+): Response {
   try {
-    const xml = buildRssXml(selfPath);
-    return new Response(xml, {
+    const body = xml ?? buildRssXml(selfPath);
+    return new Response(body, {
       headers: {
         "Content-Type": "application/rss+xml; charset=utf-8",
         "Cache-Control": "public, max-age=3600",

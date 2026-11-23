@@ -13,7 +13,11 @@ import {
   getRelatedArticles,
   slugifyTag,
 } from "@/lib/content";
-import { articleJsonLd, buildPageMetadata } from "@/lib/seo";
+import {
+  articleBreadcrumbJsonLd,
+  articleJsonLd,
+  buildPageMetadata,
+} from "@/lib/seo";
 
 export function generateStaticParams() {
   return getAllArticles().map((article) => ({ slug: article.slug }));
@@ -46,6 +50,7 @@ export async function generateMetadata({
     modifiedTime: article.updatedAt ?? article.publishedAt,
     authors: [`${siteConfig.url}/authors/${author.id}`],
     section: category.name,
+    tags: article.tags,
   });
 }
 
@@ -79,7 +84,7 @@ export default async function ArticlePage({
           minute: "2-digit",
         })
       : null;
-  const jsonLd = articleJsonLd(article);
+  const jsonLd = [articleJsonLd(article), articleBreadcrumbJsonLd(article)];
 
   return (
     <article className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-12">
@@ -89,6 +94,25 @@ export default async function ArticlePage({
       />
 
       <div className="mx-auto max-w-3xl">
+        <nav aria-label="פירורי לחם" className="mb-4 text-sm text-muted">
+          <ol className="flex flex-wrap items-center gap-1">
+            <li>
+              <Link href="/" className="hover:text-brand">
+                דף הבית
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li>
+              <Link href={category.href} className="hover:text-brand">
+                {category.name}
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li className="text-foreground" aria-current="page">
+              {article.title}
+            </li>
+          </ol>
+        </nav>
         <p className="text-sm font-semibold text-brand">
           <span className="sr-only">מדור: </span>
           <Link href={category.href}>{category.name}</Link>

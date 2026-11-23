@@ -74,6 +74,7 @@ export const articleSeed: Article[] = [
     category: "real-estate-finance",
     authorId: "noa-ben-david",
     publishedAt: "2026-11-22T11:20:00+02:00",
+    updatedAt: "2026-11-22T15:55:00+02:00",
     image: "/images/articles/mortgage-spreads-widen-for-new-buyers.png",
     imageAlt: "סימול מפתחות וגרף מימון נדלן",
     tags: ["משכנתא", "מרווח", "דיור"],
