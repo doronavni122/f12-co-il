@@ -25,3 +25,4 @@
 19. add-design-qa-pipelines-and-ci , scripts/qa .github/workflows/qa.yml package.json task_graph.log
 
 20. fix-qa-smoke-fetch-hang-exit , scripts/qa/smoke-prod.mjs task_graph.log
+21. expand-publisher-transparency-site-config , src/lib/site.ts .env.example task_graph.log

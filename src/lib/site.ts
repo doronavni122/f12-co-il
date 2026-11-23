@@ -10,4 +10,15 @@ export const siteConfig = {
   twitterHandle: "@f12finance",
   defaultOgImage: "/images/og-default.svg",
   contactEmail: process.env.CONTACT_EMAIL ?? "news@f12.co.il",
+  editorialEmail: process.env.EDITORIAL_EMAIL ?? "editor@f12.co.il",
+  correctionsEmail: process.env.CORRECTIONS_EMAIL ?? "corrections@f12.co.il",
+  location: {
+    city: "תל אביב-יפו",
+    country: "ישראל",
+    display: "תל אביב-יפו, ישראל",
+  },
+  ownership:
+    "F12 מדיה פיננסית הוא מותג פרסום עצמאי לחדשות וניתוח פיננסי. האחריות העריכתית על התוכן מוטלת על עורך האתר וצוות הכותבים.",
+  ethicsBlurb:
+    "F12 מחויב לדיוק עובדתי, הפרדה בין תוכן עריכתי לפרסום, ושקיפות בתיקונים.",
 } as const;
