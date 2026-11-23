@@ -1,9 +1,9 @@
-import type { Author, ArticleWithMeta, CategorySlug } from "@/lib/content";
-import { getCategory } from "@/lib/content";
 import { absoluteUrl } from "@/lib/absolute-url";
+import type { ArticleWithMeta, Author, CategorySlug } from "@/lib/content";
+import { getCategory } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
-const publisherLogo = {
+export const publisherLogo = {
   "@type": "ImageObject" as const,
   url: absoluteUrl(siteConfig.logoImage),
   width: siteConfig.logoWidth,
@@ -110,7 +110,7 @@ export function breadcrumbListJsonLd(
 }
 
 export function articleBreadcrumbJsonLd(article: ArticleWithMeta) {
-  const category = getCategory(article.category as CategorySlug);
+  const category = getCategory(article.category);
   return breadcrumbListJsonLd([
     { name: "דף הבית", path: "/" },
     { name: category.name, path: category.href },
@@ -118,13 +118,11 @@ export function articleBreadcrumbJsonLd(article: ArticleWithMeta) {
   ]);
 }
 
-export function categoryBreadcrumbJsonLd(categorySlug: CategorySlug) {
-  const category = getCategory(categorySlug);
+export function categoryBreadcrumbJsonLd(category: CategorySlug) {
+  const cat = getCategory(category);
   return breadcrumbListJsonLd([
     { name: "דף הבית", path: "/" },
     { name: "חדשות", path: "/news" },
-    { name: category.name, path: category.href },
+    { name: cat.name, path: cat.href },
   ]);
 }
-
-export { publisherLogo };

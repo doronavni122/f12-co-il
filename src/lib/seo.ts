@@ -7,6 +7,15 @@ import { siteConfig } from "@/lib/site";
 
 export { absoluteUrl };
 
+function countWords(text: string): number {
+  const normalized = text
+    .replace(/[#>*`_\-\[\]()]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!normalized) return 0;
+  return normalized.split(" ").length;
+}
+
 export function buildPageMetadata({
   title,
   description,
@@ -17,6 +26,7 @@ export function buildPageMetadata({
   modifiedTime,
   authors,
   section,
+  tags,
   noIndex = false,
 }: {
   title: string;
@@ -28,6 +38,7 @@ export function buildPageMetadata({
   modifiedTime?: string;
   authors?: string[];
   section?: string;
+  tags?: string[];
   noIndex?: boolean;
 }): Metadata {
   const url = absoluteUrl(path);
@@ -52,6 +63,7 @@ export function buildPageMetadata({
             modifiedTime,
             authors,
             section,
+            tags,
           }
         : {}),
     },
@@ -73,6 +85,9 @@ export function articleJsonLd(article: ArticleWithMeta) {
     ? article.image
     : absoluteUrl(article.image);
   const dateModified = article.updatedAt ?? article.publishedAt;
+  const caption = article.imageCredit
+    ? `${article.imageAlt} — ${article.imageCredit}`
+    : article.imageAlt;
 
   return {
     "@context": "https://schema.org",
@@ -85,6 +100,7 @@ export function articleJsonLd(article: ArticleWithMeta) {
         url: imageUrl,
         width: 1200,
         height: 630,
+        caption,
       },
     ],
     datePublished: article.publishedAt,
@@ -96,7 +112,7 @@ export function articleJsonLd(article: ArticleWithMeta) {
       url: absoluteUrl(`/authors/${author.id}`),
     },
     publisher: {
-      "@type": "Organization",
+      "@type": "NewsMediaOrganization",
       "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
@@ -110,12 +126,14 @@ export function articleJsonLd(article: ArticleWithMeta) {
     keywords: article.tags.join(", "),
     inLanguage: "he",
     isAccessibleForFree: true,
+    wordCount: countWords(`${article.title} ${article.excerpt} ${article.body}`),
   };
 }
 
 export {
   articleBreadcrumbJsonLd,
   breadcrumbListJsonLd,
+  categoryBreadcrumbJsonLd,
   organizationJsonLd,
   personJsonLd,
   websiteJsonLd,

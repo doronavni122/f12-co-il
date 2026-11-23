@@ -40,3 +40,4 @@
 33. add-google-news-qa-assertions-and-smoke , scripts/qa/assert-news.mjs scripts/qa/smoke-news.mjs scripts/qa/assert-seo.mjs scripts/qa/run-all.mjs package.json
 34. extend-prod-smoke-for-news-sitemap-and-feed , scripts/qa/smoke-prod.mjs
 35. add-png-publisher-logo-and-og-default-assets , public/images/logo.png public/images/og-default.png public/images/publisher-logo.png src/lib/site.ts src/lib/absolute-url.ts
+36. add-org-policy-urls-breadcrumbs-and-person-jsonld , src/lib/seo/jsonld.ts src/lib/seo.ts src/lib/content/index.ts
