@@ -145,7 +145,7 @@ export const batchNov23_2026: ArticleInput[] = [
 - ציפיות אינפלציה משוק האג״ח הממשלתי
 - שער החליפין והשפעתו על מחירים מיובאים
 
-אחרי כל החלטת ריבית אפשר לעבוד עם [צ׳ק-ליסט אחרי החלטת בנק ישראל](/article/after-boi-rate-decision-checklist).
+לרשימת פעולות אחרי כל החלטת ריבית: [צ׳ק-ליסט אחרי החלטת ריבית](/article/after-boi-rate-decision-checklist).
 
 ## שורה תחתונה
 

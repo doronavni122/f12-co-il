@@ -193,7 +193,7 @@ export const wave1PillarBodies = {
 - יש זמן לבדיקה בלי לחץ לסגור ״היום״?
 
 
-לאימות בעלות ממוקד: [אימות נכס בחו״ל](/article/verify-overseas-real-estate-asset).
+לשלב ממוקד של אימות בעלות לפני הפקדה: [אימות נכס בחו״ל](/article/verify-overseas-real-estate-asset).
 
 ## שורה תחתונה
 
