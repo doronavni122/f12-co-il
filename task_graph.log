@@ -57,3 +57,5 @@
 
 47. add-ascii-hyphen-only-cursor-rule , .cursor/rules/ascii-hyphen-only.mdc task_graph.log
 48. replace-unicode-dashes-with-ascii-hyphen , src/content/articles/batch-nov23-2026.ts src/content/articles/data.ts src/app src/components src/lib task_graph.log
+
+49. ship-wave1-p0-pillars-stubs-noindex-rate , src/content/articles/wave1-bodies.ts src/content/articles/data.ts src/lib/content/schema.ts src/content/articles/index.ts src/app/article/[slug]/page.tsx src/app/sitemap.ts src/lib/content/index.ts src/lib/rss-feed.ts src/components/home/markets-strip.tsx src/content/articles/batch-nov23-2026.ts task_graph.log

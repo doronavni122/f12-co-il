@@ -1,7 +1,7 @@
-import type { Article } from "@/lib/content/schema";
+import type { ArticleInput } from "@/lib/content/schema";
 
 /** Original Hebrew finance batch - Nov 23 2026 (IL/global, public-data anchored). */
-export const batchNov23_2026: Article[] = [
+export const batchNov23_2026: ArticleInput[] = [
   {
     slug: "bank-stocks-after-tel-aviv-selloff",
     title: "מדד הבנקים אחרי השבוע האדום: מה נשאר מהפרמיה על הרווחיות",

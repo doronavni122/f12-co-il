@@ -51,6 +51,7 @@ export async function generateMetadata({
     authors: [`${siteConfig.url}/authors/${author.id}`],
     section: category.name,
     tags: article.tags,
+    noIndex: article.noIndex === true,
   });
 }
 

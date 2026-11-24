@@ -90,14 +90,17 @@ function itemXml(article: ArticleWithMeta): string {
 
 export function buildRssXml(
   selfPath: string,
-  articles: ArticleWithMeta[] = getAllArticles(),
+  articles: ArticleWithMeta[] = getAllArticles().filter((a) => a.noIndex !== true),
   channelTitle: string = siteConfig.name,
 ): string {
   const selfUrl = selfPath.startsWith("http")
     ? selfPath
     : `${siteConfig.url}${selfPath}`;
   const logoUrl = `${siteConfig.url}${siteConfig.logoImage}`;
-  const items = articles.map(itemXml).join("\n");
+  const items = articles
+    .filter((a) => a.noIndex !== true)
+    .map(itemXml)
+    .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
@@ -125,7 +128,9 @@ export function buildRssXml(
 
 export function buildCategoryRssXml(category: CategorySlug): string {
   const cat = getCategory(category);
-  const articles = getAllArticles().filter((a) => a.category === category);
+  const articles = getAllArticles().filter(
+    (a) => a.category === category && a.noIndex !== true,
+  );
   return buildRssXml(
     `/news/${category}/rss.xml`,
     articles,

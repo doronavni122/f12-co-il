@@ -11,7 +11,7 @@ const TICKS = [
   { symbol: "זהב", value: "$2,341", change: "+0.33%", up: true },
   { symbol: "נפט WTI", value: "$77.40", change: "-0.72%", up: false },
   { symbol: "ביטקוין", value: "$97,820", change: "+1.12%", up: true },
-  { symbol: "ריבית ב״י", value: "4.50%", change: "יציב", up: true },
+  { symbol: "ריבית ב״י", value: "3.25%", change: "יציב", up: true },
 ] as const;
 
 export function MarketsStrip() {

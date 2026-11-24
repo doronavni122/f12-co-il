@@ -33,7 +33,10 @@ export const articleSchema = z.object({
   imageCredit: z.string().optional(),
   tags: z.array(z.string()).default([]),
   featured: z.boolean().default(false),
+  /** When true, article stays published but is excluded from indexing/sitemaps until rewritten. */
+  noIndex: z.boolean().default(false),
   body: z.string().min(1),
 });
 
 export type Article = z.infer<typeof articleSchema>;
+export type ArticleInput = z.input<typeof articleSchema>;

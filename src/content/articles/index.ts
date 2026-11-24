@@ -5,6 +5,7 @@ export const articles = articleSeed.map((article) => ({
   ...article,
   tags: ("tags" in article && article.tags) || [],
   featured: ("featured" in article && article.featured) || false,
+  noIndex: ("noIndex" in article && article.noIndex) || false,
   imageCredit:
     ("imageCredit" in article && article.imageCredit) || "F12 graphic",
 })) as Article[];
