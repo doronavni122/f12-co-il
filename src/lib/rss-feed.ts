@@ -129,7 +129,7 @@ export function buildCategoryRssXml(category: CategorySlug): string {
   return buildRssXml(
     `/news/${category}/rss.xml`,
     articles,
-    `${siteConfig.name} — ${cat.name}`,
+    `${siteConfig.name} - ${cat.name}`,
   );
 }
 

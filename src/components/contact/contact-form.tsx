@@ -107,7 +107,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="w-full rounded-xl border border-border bg-surface px-4 py-3 outline-none ring-brand focus:ring-2"
-          placeholder="פרטו את הפנייה — לתיקון עובדתי ציינו קישור לכתבה ואת הטעות."
+          placeholder="פרטו את הפנייה - לתיקון עובדתי ציינו קישור לכתבה ואת הטעות."
         />
       </label>
       <button

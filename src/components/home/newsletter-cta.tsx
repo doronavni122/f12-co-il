@@ -12,10 +12,10 @@ export function NewsletterCta() {
           ניוזלטר F12
         </p>
         <h2 className="mt-2 font-display text-2xl font-bold md:text-3xl">
-          סיכום שווקים יומי — בלי רעש
+          סיכום שווקים יומי - בלי רעש
         </h2>
         <p className="mt-3 text-sm leading-7 opacity-85 md:text-base">
-          כותרות נבחרות ומה שחשוב לתיק. הרשמה לרשימת המתנה — נפתח בקרוב.
+          כותרות נבחרות ומה שחשוב לתיק. הרשמה לרשימת המתנה - נפתח בקרוב.
         </p>
         <Link
           href="/newsletter"

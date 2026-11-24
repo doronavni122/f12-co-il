@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildPageMetadata({
   title: "יצירת קשר",
   description:
-    "צרו קשר עם מערכת F12 — פניות עריכתיות, תיקונים עובדתיים ושיתופי פעולה.",
+    "צרו קשר עם מערכת F12 - פניות עריכתיות, תיקונים עובדתיים ושיתופי פעולה.",
   path: "/contact",
 });
 
@@ -16,7 +16,7 @@ export default function ContactPage() {
       <h1 className="font-display text-4xl font-bold">יצירת קשר</h1>
       <p className="mt-4 text-muted">
         לפניות למערכת, בקשות תיקון עובדתי, שיתופי פעולה או שאלות על מדיניות
-        העריכה — השתמשו בטופס או בכתובות האימייל הישירות.
+        העריכה - השתמשו בטופס או בכתובות האימייל הישירות.
       </p>
 
       <div className="mt-8 grid gap-4 rounded-2xl border border-border bg-surface p-5 text-sm sm:grid-cols-2">

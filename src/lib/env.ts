@@ -30,7 +30,7 @@ export function getEnv(): SiteEnv {
     !process.env.NEXT_PUBLIC_SITE_URL
   ) {
     console.warn(
-      "[env] NEXT_PUBLIC_SITE_URL is empty in production — set it for correct canonical URLs",
+      "[env] NEXT_PUBLIC_SITE_URL is empty in production - set it for correct canonical URLs",
     );
   }
 

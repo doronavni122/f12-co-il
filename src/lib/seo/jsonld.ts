@@ -47,7 +47,7 @@ export function organizationJsonLd() {
       url: absoluteUrl(siteConfig.defaultOgImage),
       width: 1200,
       height: 630,
-      caption: `${siteConfig.name} — default social image`,
+      caption: `${siteConfig.name} - default social image`,
     },
     description: siteConfig.description,
     foundingDate: "2026",

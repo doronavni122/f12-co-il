@@ -44,7 +44,7 @@ function getServerTheme(): Theme {
   return "light";
 }
 
-/** Blocking bootstrap — keep in sync with ThemeToggle storage key `f12-theme`. */
+/** Blocking bootstrap - keep in sync with ThemeToggle storage key `f12-theme`. */
 export const themeInitScript = `(function(){try{var s=localStorage.getItem("f12-theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=s==="light"||s==="dark"?s:(d?"dark":"light");var r=document.documentElement;r.classList.toggle("dark",t==="dark");r.dataset.theme=t;}catch(e){console.error("[theme] bootstrap failed",e);}})();`;
 
 export function ThemeToggle() {

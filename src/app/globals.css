@@ -145,7 +145,7 @@ a {
   animation: ticker 38s linear infinite;
 }
 
-/* Above-fold hero must stay opacity:1 for LCP — motion is transform-only */
+/* Above-fold hero must stay opacity:1 for LCP - motion is transform-only */
 @keyframes rise-in {
   from {
     transform: translateY(8px);

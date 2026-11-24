@@ -86,7 +86,7 @@ export function articleJsonLd(article: ArticleWithMeta) {
     : absoluteUrl(article.image);
   const dateModified = article.updatedAt ?? article.publishedAt;
   const caption = article.imageCredit
-    ? `${article.imageAlt} — ${article.imageCredit}`
+    ? `${article.imageAlt} - ${article.imageCredit}`
     : article.imageAlt;
 
   return {

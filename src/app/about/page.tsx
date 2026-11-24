@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
   title: "אודות",
-  description: `אודות ${siteConfig.name} — מי מפרסם, מה המשימה, ומי אחראי על התוכן העריכתי.`,
+  description: `אודות ${siteConfig.name} - מי מפרסם, מה המשימה, ומי אחראי על התוכן העריכתי.`,
   path: "/about",
 });
 
@@ -20,14 +20,14 @@ export default function AboutPage() {
         <h2>מי מפרסם את F12</h2>
         <p>
           <strong>{siteConfig.legalName}</strong> מפעיל את אתר{" "}
-          <strong>{siteConfig.name}</strong> ({siteConfig.domain}) — מדיה פיננסית
+          <strong>{siteConfig.name}</strong> ({siteConfig.domain}) - מדיה פיננסית
           בעברית המתמקדת בשוק ההון, מט״ח, נדל״ן ומימון, מאקרו, פינטק וקריפטו.
         </p>
         <p>{siteConfig.ownership}</p>
 
         <h2>המשימה</h2>
         <p>
-          המשימה שלנו היא לספק חדשות וניתוח פיננסי ברורים, ממוקדים ומבוססי מקורות —
+          המשימה שלנו היא לספק חדשות וניתוח פיננסי ברורים, ממוקדים ומבוססי מקורות -
           בלי רעש מיותר ובלי הבטחות השקעה. אנחנו כותבים למשקיעים פרטיים, יזמים
           ומקבלי החלטות שצריכים להבין במהירות מה קורה בשווקים ומה המשמעות
           העסקית.

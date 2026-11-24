@@ -4,7 +4,7 @@ export const siteConfig = {
   domain: "f12.co.il",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://f12.co.il",
   description:
-    "חדשות פיננסים ישראליות וגלובליות: שוק ההון, מט״ח, נדל״ן, מאקרו וטק פיננסי — ניתוח חד ועדכונים בזמן אמת.",
+    "חדשות פיננסים ישראליות וגלובליות: שוק ההון, מט״ח, נדל״ן, מאקרו וטק פיננסי - ניתוח חד ועדכונים בזמן אמת.",
   locale: "he_IL",
   language: "he",
   twitterHandle: "@f12finance",

@@ -1,4 +1,4 @@
-/** Illustrative snapshot — not a live market feed. */
+/** Illustrative snapshot - not a live market feed. */
 const MARKET_AS_OF = "2026-11-23T18:00:00+02:00";
 
 const TICKS = [
@@ -23,13 +23,13 @@ export function MarketsStrip() {
 
   return (
     <section
-      aria-label="מדדי שוק — נתוני הדגמה"
+      aria-label="מדדי שוק - נתוני הדגמה"
       className="overflow-hidden border-y border-border bg-surface"
     >
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 md:px-6">
         <div className="shrink-0">
           <p className="text-xs font-bold tracking-wide text-brand">שווקים</p>
-          <p className="text-[10px] text-muted" title="נתוני הדגמה — לא פיד חי">
+          <p className="text-[10px] text-muted" title="נתוני הדגמה - לא פיד חי">
             הדגמה · {asOfLabel}
           </p>
         </div>

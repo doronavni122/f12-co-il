@@ -35,7 +35,7 @@ export const categories: Category[] = [
   {
     slug: "crypto",
     name: "מט״ח וקריפטו",
-    description: "מטבעות, שקל־דולר, נזילות דיגיטלית והשפעה על תיקים.",
+    description: "מטבעות, שקל-דולר, נזילות דיגיטלית והשפעה על תיקים.",
     href: "/news/crypto",
   },
   {

@@ -6,7 +6,7 @@ const bodySchema = z.object({
   consent: z.literal(true),
 });
 
-/** In-memory waitlist for this process — replace with ESP when ready. */
+/** In-memory waitlist for this process - replace with ESP when ready. */
 const waitlist = new Set<string>();
 
 export async function POST(request: Request) {

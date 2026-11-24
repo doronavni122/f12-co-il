@@ -100,7 +100,7 @@ export function SiteFooter() {
             © {COPYRIGHT_YEAR} {siteConfig.legalName}. כל הזכויות שמורות.{" "}
             {siteConfig.location.display}.
           </p>
-          <p>תוכן חינוכי/עיתונאי — אינו ייעוץ השקעות.</p>
+          <p>תוכן חינוכי/עיתונאי - אינו ייעוץ השקעות.</p>
         </div>
       </div>
     </footer>

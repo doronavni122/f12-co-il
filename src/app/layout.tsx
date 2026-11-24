@@ -34,7 +34,7 @@ const rubik = Rubik({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — חדשות פיננסים ושווקים`,
+    default: `${siteConfig.name} - חדשות פיננסים ושווקים`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -66,13 +66,13 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — חדשות פיננסים ושווקים`,
+    title: `${siteConfig.name} - חדשות פיננסים ושווקים`,
     description: siteConfig.description,
     images: [{ url: siteConfig.defaultOgImage, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — חדשות פיננסים ושווקים`,
+    title: `${siteConfig.name} - חדשות פיננסים ושווקים`,
     description: siteConfig.description,
     site: siteConfig.twitterHandle,
     images: [siteConfig.defaultOgImage],

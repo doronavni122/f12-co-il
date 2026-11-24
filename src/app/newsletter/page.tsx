@@ -12,7 +12,7 @@ export default function NewsletterPage() {
     <div className="mx-auto max-w-3xl px-4 py-12 md:px-6">
       <h1 className="font-display text-4xl font-bold">ניוזלטר F12</h1>
       <p className="mt-4 text-muted">
-        סיכום שווקים יומי — כותרות נבחרות בלי רעש. הניוזלטר המלא ייפתח בקרוב;
+        סיכום שווקים יומי - כותרות נבחרות בלי רעש. הניוזלטר המלא ייפתח בקרוב;
         השאירו אימייל לרשימת המתנה.
       </p>
       <NewsletterForm />

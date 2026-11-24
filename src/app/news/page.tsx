@@ -8,7 +8,7 @@ const PAGE_SIZE = 12;
 export const metadata = buildPageMetadata({
   title: "כל החדשות",
   description:
-    "ארכיון כתבות F12 — שווקים, מאקרו, נדל״ן פיננסי, פינטק, קריפטו ודעות.",
+    "ארכיון כתבות F12 - שווקים, מאקרו, נדל״ן פיננסי, פינטק, קריפטו ודעות.",
   path: "/news",
 });
 

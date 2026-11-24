@@ -13,7 +13,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: `${siteConfig.name} — חדשות פיננסים ושווקים`,
+  title: `${siteConfig.name} - חדשות פיננסים ושווקים`,
   description: siteConfig.description,
   path: "/",
 });
@@ -56,7 +56,7 @@ export default function HomePage() {
             F12
           </p>
           <p className="animate-rise-delay mt-3 max-w-xl text-lg text-sky-100/90 md:text-xl">
-            חדשות פיננסים ישראליות וגלובליות — חדות, מהירות, בלי רעש.
+            חדשות פיננסים ישראליות וגלובליות - חדות, מהירות, בלי רעש.
           </p>
           {featured ? (
             <div className="animate-rise-delay-2 mt-10 max-w-3xl">
