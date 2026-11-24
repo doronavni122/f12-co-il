@@ -1,5 +1,6 @@
 import type { ArticleInput } from "@/lib/content/schema";
 import { batchNov23_2026 } from "./batch-nov23-2026";
+import { batchWave2Nov24_2026 } from "./batch-wave2-nov24-2026";
 import {
   wave1PillarBodies,
   wave1StubBodies,
@@ -552,4 +553,5 @@ export const articleSeed: ArticleInput[] = [
 שיווק מיזמי נדל״ן חוצי-גבולות יכול להיות לגיטימי - אם התשובות לשאלות האלה כתובות, ניתנות לאימות, ומגיעות לפני ההעברה הראשונה.`,
   },
   ...batchNov23_2026,
+  ...batchWave2Nov24_2026,
 ];
