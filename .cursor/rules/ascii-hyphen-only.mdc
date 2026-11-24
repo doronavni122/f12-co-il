@@ -1,0 +1,26 @@
+---
+description: Only ASCII hyphen-minus (-) allowed in frontend copy and metadata; replace all other dash characters
+globs: "**/*.{tsx,ts,jsx,js,md,mdx,json,mjs}"
+alwaysApply: true
+---
+
+# ASCII hyphen only
+
+In frontend UI copy, metadata (titles, descriptions, OG, JSON-LD), articles, authors, and site config strings visible to users or crawlers, the **only** allowed dash character is U+002D HYPHEN-MINUS `-`.
+
+## Replace with `-`
+
+Never use em/en dashes, figure dash, horizontal bar, Unicode hyphen, non-breaking hyphen, minus sign, fullwidth/small hyphen variants, Hebrew maqaf, or any other `Pd` / dash lookalike.
+
+| BAD | GOOD |
+|-----|------|
+| `F12 — חדשות` | `F12 - חדשות` |
+| `3–6 חודשים` | `3-6 חודשים` |
+| `פרופ־טק` | `פרופ-טק` |
+| `title: "אירו—דולר"` | `title: "אירו-דולר"` |
+
+## Scope
+
+- Apply in `src/`, content, SEO helpers, and public text metadata.
+- Do not introduce Unicode dashes in new copy.
+- Leave ASCII `-` alone; do not change code operators or CSS that already use `-`.

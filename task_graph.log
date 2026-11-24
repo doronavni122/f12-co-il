@@ -54,3 +54,5 @@
 45. mesh-avni-cluster-internal-links , src/content/articles/data.ts task_graph.log
 
 46. publish-ten-hebrew-finance-seo-articles , src/content/articles/batch-nov23-2026.ts src/content/articles/data.ts public/images/articles task_graph.log
+
+47. add-ascii-hyphen-only-cursor-rule , .cursor/rules/ascii-hyphen-only.mdc task_graph.log
