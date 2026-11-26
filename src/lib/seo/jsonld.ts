@@ -126,3 +126,68 @@ export function categoryBreadcrumbJsonLd(category: CategorySlug) {
     { name: cat.name, path: cat.href },
   ]);
 }
+
+/** Strip markdown link/emphasis markers for JSON-LD text values. */
+function plainTextFromMarkdown(value: string): string {
+  return value
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`>#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Extract FAQ Q&A pairs from article markdown bodies that use
+ * `## שאלות נפוצות` followed by `###` questions.
+ */
+export function extractArticleFaq(
+  body: string,
+): Array<{ question: string; answer: string }> {
+  const faqMatch = body.match(
+    /^##\s+שאלות נפוצות\s*\n([\s\S]*?)(?=^##\s+|\Z)/m,
+  );
+  if (!faqMatch) return [];
+
+  const section = faqMatch[1];
+  const items: Array<{ question: string; answer: string }> = [];
+  const questionBlocks = section.split(/^###\s+/m).slice(1);
+
+  for (const block of questionBlocks) {
+    const lines = block.trim().split("\n");
+    if (lines.length === 0) continue;
+    const question = plainTextFromMarkdown(lines[0] ?? "");
+    const answer = plainTextFromMarkdown(lines.slice(1).join("\n"));
+    if (!question || !answer) continue;
+    items.push({ question, answer });
+  }
+
+  return items;
+}
+
+/**
+ * FAQPage JSON-LD for articles that expose an on-page FAQ section.
+ * Returns null when fewer than 2 parseable Q&As exist.
+ */
+export function articleFaqJsonLd(article: ArticleWithMeta) {
+  const faqs = extractArticleFaq(article.body);
+  if (faqs.length < 2) {
+    console.error("[seo] FAQ JSON-LD skipped: insufficient FAQ items", {
+      slug: article.slug,
+      count: faqs.length,
+    });
+    return null;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}

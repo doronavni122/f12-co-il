@@ -132,8 +132,10 @@ export function articleJsonLd(article: ArticleWithMeta) {
 
 export {
   articleBreadcrumbJsonLd,
+  articleFaqJsonLd,
   breadcrumbListJsonLd,
   categoryBreadcrumbJsonLd,
+  extractArticleFaq,
   organizationJsonLd,
   personJsonLd,
   websiteJsonLd,

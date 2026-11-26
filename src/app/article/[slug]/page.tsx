@@ -15,6 +15,7 @@ import {
 } from "@/lib/content";
 import {
   articleBreadcrumbJsonLd,
+  articleFaqJsonLd,
   articleJsonLd,
   buildPageMetadata,
 } from "@/lib/seo";
@@ -85,7 +86,12 @@ export default async function ArticlePage({
           minute: "2-digit",
         })
       : null;
-  const jsonLd = [articleJsonLd(article), articleBreadcrumbJsonLd(article)];
+  const faqJsonLd = articleFaqJsonLd(article);
+  const jsonLd = [
+    articleJsonLd(article),
+    articleBreadcrumbJsonLd(article),
+    ...(faqJsonLd ? [faqJsonLd] : []),
+  ];
 
   return (
     <article className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-12">
