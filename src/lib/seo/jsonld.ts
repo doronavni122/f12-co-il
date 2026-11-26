@@ -170,8 +170,11 @@ export function extractArticleFaq(
  */
 export function articleFaqJsonLd(article: ArticleWithMeta) {
   const faqs = extractArticleFaq(article.body);
+  if (faqs.length === 0) {
+    return null;
+  }
   if (faqs.length < 2) {
-    console.error("[seo] FAQ JSON-LD skipped: insufficient FAQ items", {
+    console.error("[seo] FAQ JSON-LD skipped: malformed FAQ section", {
       slug: article.slug,
       count: faqs.length,
     });
