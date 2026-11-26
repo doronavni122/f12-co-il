@@ -70,3 +70,5 @@
 54. harden-wave4-media-accuracy-articles-full-seo-compliance , src/content/articles/batch-wave4-nov26-2026.ts public/images/articles/verify-judge-name-official-sources.png public/images/articles/prosecution-request-vs-imposed-sentence.png public/images/articles/suspended-sentence-and-fine-in-plea-reports.png public/images/articles/plea-bargain-vs-conviction-after-evidence.png public/images/articles/amended-indictment-role-and-headlines.png task_graph.log
 
 55. add-article-faqpage-jsonld-support , src/lib/seo/jsonld.ts src/lib/seo.ts src/app/article/[slug]/page.tsx task_graph.log
+
+56. expand-wave4-articles-to-2000-word-depth , src/content/articles/batch-wave4-nov26-2026.ts task_graph.log
