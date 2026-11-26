@@ -2,6 +2,7 @@ import type { ArticleInput } from "@/lib/content/schema";
 import { batchNov23_2026 } from "./batch-nov23-2026";
 import { batchWave2_nov24_2026 } from "./batch-wave2-nov24-2026";
 import { batchWave3_nov25_2026 } from "./batch-wave3-nov25-2026";
+import { batchWave4_nov26_2026 } from "./batch-wave4-nov26-2026";
 import {
   wave1PillarBodies,
   wave1StubBodies,
@@ -556,4 +557,5 @@ export const articleSeed: ArticleInput[] = [
   ...batchNov23_2026,
   ...batchWave2_nov24_2026,
   ...batchWave3_nov25_2026,
+  ...batchWave4_nov26_2026,
 ];
