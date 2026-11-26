@@ -72,3 +72,5 @@
 55. add-article-faqpage-jsonld-support , src/lib/seo/jsonld.ts src/lib/seo.ts src/app/article/[slug]/page.tsx task_graph.log
 
 56. expand-wave4-articles-to-2000-word-depth , src/content/articles/batch-wave4-nov26-2026.ts task_graph.log
+
+57. add-wave4-gate-r1-research-domain-studies , reserch/0001_verify-judge-name-official-sources.md reserch/0002_prosecution-request-vs-imposed-sentence.md reserch/0003_suspended-sentence-and-fine-in-plea-reports.md reserch/0004_plea-bargain-vs-conviction-after-evidence.md reserch/0005_amended-indictment-role-and-headlines.md task_graph.log
